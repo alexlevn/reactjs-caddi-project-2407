@@ -11,7 +11,6 @@ function App() {
       <Header />
       <div
         style={{
-          border: '1px solid red',
           width: '1000px',
           margin: 'auto',
           textAlign: 'left',
@@ -20,30 +19,12 @@ function App() {
       >
         <p>Task List</p>
 
-        <ol
-          style={{
-            listStyleType: 'none',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            gap: '10px',
-          }}
-        >
+        <ol className="task-list">
           {tasks.map((task, index) => (
-            <div
-              key={index}
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                width: '100%',
-              }}
-            >
-              <li key={'todo-item' + index.toString()}>{task}</li>
+            <div key={index + 1} className="task-item">
+              <li id={`todo-item-${index + 1}`}>{task}</li>
               <button
-                id={'complete-button-' + index.toString()}
+                id={`complete-button-${index + 1}`}
                 onClick={() => {
                   const newTasks = [...tasks]
                   newTasks.splice(index, 1)
@@ -56,15 +37,7 @@ function App() {
           ))}
         </ol>
 
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            width: '100%',
-          }}
-        >
+        <div className="task-input">
           <input
             id="todo-input"
             value={newTask}

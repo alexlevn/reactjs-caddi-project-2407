@@ -36,3 +36,39 @@
     transform: rotate(360deg);
   }
 }
+
+
+.header{
+    background-color: lightgray;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.task-list{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background-color: lightgray;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.task-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.task-input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
