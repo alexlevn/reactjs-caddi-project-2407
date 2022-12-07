@@ -6,6 +6,23 @@ function App() {
   const [tasks, setTasks] = React.useState<string[]>([])
   const [newTask, setNewTask] = React.useState<string>('')
 
+  const handleAddTask = () => {
+    if (newTask === '') {
+      return
+    }
+
+    const newTasks = [...tasks]
+    newTasks.push(newTask)
+    setTasks(newTasks)
+    setNewTask('')
+  }
+
+  const handleRemoveTask = (index: number) => {
+    const newTasks = [...tasks]
+    newTasks.splice(index, 1)
+    setTasks(newTasks)
+  }
+
   return (
     <div className="App">
       <Header />
@@ -18,11 +35,7 @@ function App() {
               <li id={`todo-item-${index + 1}`}>{task}</li>
               <button
                 id={`complete-button-${index + 1}`}
-                onClick={() => {
-                  const newTasks = [...tasks]
-                  newTasks.splice(index, 1)
-                  setTasks(newTasks)
-                }}
+                onClick={() => handleRemoveTask(index)}
               >
                 Done
               </button>
@@ -38,19 +51,7 @@ function App() {
               setNewTask(e.target.value)
             }}
           />
-          <button
-            id="add-button"
-            onClick={() => {
-              if (newTask === '') {
-                return
-              }
-
-              const newTasks = [...tasks]
-              newTasks.push(newTask)
-              setTasks(newTasks)
-              setNewTask('')
-            }}
-          >
+          <button id="add-button" onClick={handleAddTask}>
             Add
           </button>
         </div>
