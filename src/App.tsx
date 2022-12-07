@@ -9,14 +9,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div
-        style={{
-          width: '1000px',
-          margin: 'auto',
-          textAlign: 'left',
-          padding: '10px',
-        }}
-      >
+      <div className="task-list-container">
         <p>Task List</p>
 
         <ol className="task-list">
