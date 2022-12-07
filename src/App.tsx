@@ -2,12 +2,8 @@ import React from 'react'
 import './App.css'
 import Header from './components/Header'
 
-// TODO: Please implement this component.
 function App() {
-  const [tasks, setTasks] = React.useState<string[]>([
-    'Learn React',
-    'Learn TypeScript',
-  ])
+  const [tasks, setTasks] = React.useState<string[]>([])
   const [newTask, setNewTask] = React.useState<string>('')
 
   return (
@@ -47,6 +43,7 @@ function App() {
             >
               <li key={'todo-item' + index.toString()}>{task}</li>
               <button
+                id={'complete-button-' + index.toString()}
                 onClick={() => {
                   const newTasks = [...tasks]
                   newTasks.splice(index, 1)
@@ -58,6 +55,39 @@ function App() {
             </div>
           ))}
         </ol>
+
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            width: '100%',
+          }}
+        >
+          <input
+            id="todo-input"
+            value={newTask}
+            onChange={(e) => {
+              setNewTask(e.target.value)
+            }}
+          />
+          <button
+            id="add-button"
+            onClick={() => {
+              if (newTask === '') {
+                return
+              }
+
+              const newTasks = [...tasks]
+              newTasks.push(newTask)
+              setTasks(newTasks)
+              setNewTask('')
+            }}
+          >
+            Add
+          </button>
+        </div>
       </div>
     </div>
   )
